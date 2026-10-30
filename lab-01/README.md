@@ -1,11 +1,11 @@
 # Lab 1: Node.js and Express server
 
-**Name:** Your Name  
-**Registration number:** Your Registration Number  
-**Section:** Your Section  
+**Name:** G.Chandu  
+**Registration number:** 252U1R9037  
+**Section:** CSE-GEN-AI-2A-304  
 
 ## Live link
-Not deployed yet. Add your public deployment URL here after deploying.
+https://backend-lab-reports.onrender.com/
 
 ## Requirements
 - Node.js (LTS recommended)
@@ -70,7 +70,6 @@ Create a `screenshots/` folder and add screenshots of `/`, `/about`, `/time`, an
 ```
 
 ## Notes
-- Replace the placeholder name, registration number, and section before submitting.
 - Take screenshots of the working routes.
 - Do not commit `.env` or `node_modules`.
 - Write and understand the code yourself, as the lab may include a viva.
