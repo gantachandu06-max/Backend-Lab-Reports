@@ -1,0 +1,370 @@
+{
+  "info": {
+    "name": "Lab 3 - Books REST API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "GET all books (defaults) [200]",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/books/"
+        }
+      }
+    },
+    {
+      "name": "Search title contains 'the' [200]",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/books/?search_q=the"
+        }
+      }
+    },
+    {
+      "name": "Sort by price, highest first [200]",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/books/?order_by=price&order=DESC"
+        }
+      }
+    },
+    {
+      "name": "Pagination: limit 3, offset 3 [200]",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/books/?limit=3&offset=3"
+        }
+      }
+    },
+    {
+      "name": "Price range 300 to 450 [200]",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/books/?min_price=300&max_price=450"
+        }
+      }
+    },
+    {
+      "name": "Search + sort + range together [200]",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/books/?search_q=the&order_by=title&order=ASC&min_price=200&limit=5"
+        }
+      }
+    },
+    {
+      "name": "GET one book [200]",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/books/2/"
+        }
+      }
+    },
+    {
+      "name": "POST valid book [201]",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/books/"
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"The Alchemist\",\n  \"author\": \"Paulo Coelho\",\n  \"price\": 299,\n  \"pages\": 208\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "PUT valid update (id 2) [200]",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/books/2/"
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"The Alchemist\",\n  \"author\": \"Paulo Coelho\",\n  \"price\": 299,\n  \"pages\": 208\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "DELETE book (use the id returned by POST) [200]",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/books/11/"
+        }
+      }
+    },
+    {
+      "name": "Bad order_by [400]",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/books/?order_by=color"
+        }
+      }
+    },
+    {
+      "name": "Bad order [400]",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/books/?order=up"
+        }
+      }
+    },
+    {
+      "name": "limit too large [400]",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/books/?limit=500"
+        }
+      }
+    },
+    {
+      "name": "limit not a number [400]",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/books/?limit=abc"
+        }
+      }
+    },
+    {
+      "name": "min_price greater than max_price [400]",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/books/?min_price=500&max_price=100"
+        }
+      }
+    },
+    {
+      "name": "GET id not a number [400]",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/books/abc/"
+        }
+      }
+    },
+    {
+      "name": "POST missing title [400]",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/books/"
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"author\": \"Someone\",\n  \"price\": 100,\n  \"pages\": 50\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "POST missing author [400]",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/books/"
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Some Title\",\n  \"price\": 100,\n  \"pages\": 50\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "POST non-numeric price [400]",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/books/"
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Some Title\",\n  \"author\": \"Someone\",\n  \"price\": \"abc\",\n  \"pages\": 50\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "POST invalid JSON [400]",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/books/"
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"title\": \"Broken\", ",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "PUT invalid body [400]",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/books/2/"
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"\",\n  \"author\": \"Someone\",\n  \"price\": 100,\n  \"pages\": 50\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "GET id that does not exist [404]",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/books/9999/"
+        }
+      }
+    },
+    {
+      "name": "PUT id that does not exist [404]",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/books/9999/"
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"The Alchemist\",\n  \"author\": \"Paulo Coelho\",\n  \"price\": 299,\n  \"pages\": 208\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "DELETE id that does not exist [404]",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/books/9999/"
+        }
+      }
+    },
+    {
+      "name": "Unknown route [404]",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/authors/"
+        }
+      }
+    }
+  ]
+}
