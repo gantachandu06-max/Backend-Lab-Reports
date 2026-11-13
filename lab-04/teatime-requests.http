@@ -1,0 +1,54 @@
+
+### 1. Get All Machines
+GET http://localhost:3000/machines
+
+
+### 2. Get Machine By ID
+GET http://localhost:3000/machines/1
+
+
+### 3. Add Machine
+# @name addMachine
+POST http://localhost:3000/machines
+Content-Type: application/json
+
+{
+    "name": "Machine 4",
+    "product": "Masala Tea"
+}
+
+
+### 4. Update Machine
+@machineId = {{addMachine.response.body.$.id}}
+
+PUT http://localhost:3000/machines/{{machineId}}
+Content-Type: application/json
+
+{
+    "name": "Machine 4 Updated",
+    "product": "Ginger Tea"
+}
+
+
+### 5. Delete Machine
+DELETE http://localhost:3000/machines/{{machineId}}
+
+
+### 6. Search Machines By Product
+GET http://localhost:3000/machines?product=Tea
+
+
+### 7. Get All Operators
+GET http://localhost:3000/operators
+
+
+### 8. Get Operator By ID
+GET http://localhost:3000/operators/1
+
+
+### 9. Get Assignments With Names
+GET http://localhost:3000/assignments
+
+
+### 10. Get Latest Audit Records
+GET http://localhost:3000/audit

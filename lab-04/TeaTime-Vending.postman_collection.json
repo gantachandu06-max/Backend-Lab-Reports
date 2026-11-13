@@ -1,0 +1,90 @@
+
+{
+  "info": {
+    "name": "TeaTime Vending API",
+    "description": "API requests for the LG-14 TeaTime Vending group assignment",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Get All Machines",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:3000/machines"
+      }
+    },
+    {
+      "name": "Get Machine By ID",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:3000/machines/1"
+      }
+    },
+    {
+      "name": "Add Machine",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Machine 4\",\n  \"product\": \"Masala Tea\"\n}"
+        },
+        "url": "http://localhost:3000/machines"
+      }
+    },
+    {
+      "name": "Update Machine",
+      "request": {
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Machine 4 Updated\",\n  \"product\": \"Ginger Tea\"\n}"
+        },
+        "url": "http://localhost:3000/machines/4"
+      }
+    },
+    {
+      "name": "Delete Machine",
+      "request": {
+        "method": "DELETE",
+        "url": "http://localhost:3000/machines/4"
+      }
+    },
+    {
+      "name": "Search Machines By Product",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:3000/machines?product=Tea"
+      }
+    },
+    {
+      "name": "Get All Operators",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:3000/operators"
+      }
+    },
+    {
+      "name": "Get Operator By ID",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:3000/operators/1"
+      }
+    },
+    {
+      "name": "Get Assignments With Names",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:3000/assignments"
+      }
+    },
+    {
+      "name": "Get Latest Audit Records",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:3000/audit"
+      }
+    }
+  ]
+}
